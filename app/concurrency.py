@@ -1,6 +1,6 @@
 from threading import Thread
 from multiprocessing import Process
-from logger import logger
+from app.logger import logger
 
 def task(name):
     logger.info(f"Executing task: {name}")

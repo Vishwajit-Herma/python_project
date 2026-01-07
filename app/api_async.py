@@ -1,6 +1,6 @@
 import aiohttp
 import asyncio
-from logger import logger
+from app.logger import logger
 
 async def fetch(session, url):
     async with session.get(url) as response:
