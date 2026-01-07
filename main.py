@@ -1,5 +1,4 @@
 import asyncio
-
 from app.api_sync import fetch_users, fetch_posts
 from app.api_async import fetch_all
 from app.storage import save_json
@@ -27,6 +26,7 @@ def main():
         save_json("users.json", users)
         save_json("filtered_users.json", filtered_users)
         save_json("user_names.json", user_names)
+        save_json("posts.json", posts)
 
         asyncio.run(fetch_all())
         run_threading()
