@@ -1,4 +1,5 @@
 import asyncio
+from unittest import result
 
 from app.api_async import fetch_all
 from app.processor import (
@@ -11,6 +12,7 @@ from app.concurrency import (
     process_data_with_multiprocessing
 )
 from app.exceptions import APIError, DataProcessingError, StorageError
+from app.mapper import map_users, map_posts
 
 
 def main():
@@ -19,9 +21,11 @@ def main():
 
         # -------- THREADING FUNCTIONALITY --------
         result = fetch_data_with_threads()
+        raw_users = result["users"]
+        raw_posts = result["posts"]
 
-        users = result["users"]
-        posts = result["posts"]
+        users = map_users(raw_users)
+        posts = map_posts(raw_posts)
 
         # -------- PROCESSING --------
         filtered_users = filter_users_with_email(users)
@@ -35,10 +39,10 @@ def main():
         print(f"Posts count: {posts_count}")
 
         # -------- STORAGE --------
-        save_json("users.json", users)
-        save_json("filtered_users.json", filtered_users)
+        save_json("users.json", [u.to_dict() for u in users])
+        save_json("posts.json", [p.to_dict() for p in posts])
+        save_json("filtered_users.json", [user.to_dict() for user in filtered_users])
         save_json("user_names.json", user_names)
-        save_json("posts.json", posts)
 
         # -------- ASYNC --------
         asyncio.run(fetch_all())

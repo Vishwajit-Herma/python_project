@@ -11,6 +11,18 @@ class User(BaseModel):
         self._name = name
         self._email = email
 
+    @property
+    def id(self):
+        return self._id
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def email(self):
+        return self._email
+
     def __str__(self):
         return self._name
     
