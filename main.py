@@ -1,9 +1,7 @@
 import asyncio
-from unittest import result
-
 from app.api_async import fetch_all
 from app.processor import (
-    filter_users_with_email,
+    filter_users_by_email_domain,
     map_user_names
 )
 from app.storage import save_json
@@ -28,7 +26,7 @@ def main():
         posts = map_posts(raw_posts)
 
         # -------- PROCESSING --------
-        filtered_users = filter_users_with_email(users)
+        filtered_users = filter_users_by_email_domain(users)
         user_names = map_user_names(users)
 
         # -------- MULTIPROCESSING FUNCTIONALITY --------

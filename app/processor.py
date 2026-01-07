@@ -3,9 +3,12 @@ from app.logger import logger
 from app.exceptions import DataProcessingError
 
 
-def filter_users_with_email(users):
+def filter_users_by_email_domain(users):
     try:
-        return [user for user in users if "@" in user.email]
+        return [
+            user for user in users
+            if user.email.endswith((".org", ".biz"))
+        ]
     except Exception as e:
         logger.error(f"Filtering users failed: {e}")
         raise DataProcessingError("User filtering failed")
