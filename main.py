@@ -1,9 +1,9 @@
 import asyncio
-from api_sync import fetch_users, fetch_posts
-from api_async import fetch_all
-from processor import filter_users_with_email, map_user_names
-from storage import save_json
-from concurrency import run_threading, run_multiprocessing
+from app.api_sync import fetch_users, fetch_posts
+from app.api_async import fetch_all
+from app.processor import filter_users_with_email, map_user_names
+from app.storage import save_json
+from app.concurrency import run_threading, run_multiprocessing
 
 def main():
     users = fetch_users()
