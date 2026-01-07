@@ -1,13 +1,14 @@
 import asyncio
-from app.api_sync import fetch_users, fetch_posts
+
 from app.api_async import fetch_all
-from app.storage import save_json
-from app.concurrency import run_threading, run_multiprocessing
 from app.processor import (
     filter_users_with_email,
-    map_user_names,
-    count_total_posts,
-    user_name_generator
+    map_user_names
+)
+from app.storage import save_json
+from app.concurrency import (
+    fetch_data_with_threads,
+    process_data_with_multiprocessing
 )
 from app.exceptions import APIError, DataProcessingError, StorageError
 
@@ -16,35 +17,39 @@ def main():
     try:
         print("Application started")
 
-        users = fetch_users()
-        posts = fetch_posts()
+        # -------- THREADING FUNCTIONALITY --------
+        result = fetch_data_with_threads()
 
+        users = result["users"]
+        posts = result["posts"]
+
+        # -------- PROCESSING --------
         filtered_users = filter_users_with_email(users)
         user_names = map_user_names(users)
-        total_posts = count_total_posts(posts)
 
+        # -------- MULTIPROCESSING FUNCTIONALITY --------
+        
+        users_count, posts_count = process_data_with_multiprocessing(users, posts)
+
+        print(f"Users count: {users_count}")
+        print(f"Posts count: {posts_count}")
+
+        # -------- STORAGE --------
         save_json("users.json", users)
         save_json("filtered_users.json", filtered_users)
         save_json("user_names.json", user_names)
         save_json("posts.json", posts)
 
+        # -------- ASYNC --------
         asyncio.run(fetch_all())
-        run_threading()
-        run_multiprocessing()
 
         print("Application finished successfully")
 
-    except APIError as e:
-        print(f"API Error: {e}")
-
-    except DataProcessingError as e:
-        print(f"Processing Error: {e}")
-
-    except StorageError as e:
-        print(f"Storage Error: {e}")
+    except (APIError, DataProcessingError, StorageError) as e:
+        print(f"Application error: {e}")
 
     except Exception as e:
-        print(f"Unexpected Error: {e}")
+        print(f"Unexpected error: {e}")
 
 
 if __name__ == "__main__":
