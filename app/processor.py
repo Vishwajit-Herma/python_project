@@ -28,3 +28,8 @@ def count_total_posts(posts):
     except Exception as e:
         logger.error(f"Counting posts failed: {e}")
         raise DataProcessingError("Post counting failed")
+
+def active_user_generator(users):
+    for user in users:
+        if user.email.endswith((".org", ".biz")):
+            yield user

@@ -2,7 +2,8 @@ import asyncio
 from app.api_async import fetch_all
 from app.processor import (
     filter_users_by_email_domain,
-    map_user_names
+    map_user_names,
+    active_user_generator
 )
 from app.storage import save_json
 from app.concurrency import (
@@ -28,7 +29,9 @@ def main():
         posts = map_posts(raw_posts)
 
         # -------- PROCESSING --------
-        filtered_users = filter_users_by_email_domain(users)
+        filtered_users = filter_users_by_email_domain(users)    
+        # filtered_users = list(active_user_generator(users))
+
         user_names = map_user_names(users)
 
         # -------- MULTIPROCESSING FUNCTIONALITY --------
@@ -43,6 +46,7 @@ def main():
         save_json("posts.json", [p.to_dict() for p in posts])
         save_json("filtered_users.json", [user.to_dict() for user in filtered_users])
         save_json("user_names.json", user_names)
+        
 
         # -------- ASYNC --------
        
