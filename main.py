@@ -47,12 +47,27 @@ def main():
         # -------- ASYNC --------
        
         # async def async_reference_demo():
-        #     # async fetch
-        #     users, posts = await fetch_all()
+        #     # async fetch 
 
-        #     # async store
-        #     await save_json_async("users_async.json", users)
-        #     await save_json_async("posts_async.json", posts)
+        #     raw_users, raw_posts = await fetch_all()
+
+        #     # mapping (CPU-light → safe)
+        #     users = map_users(raw_users)
+        #     posts = map_posts(raw_posts)
+
+        #     # processing (CPU-light → safe)
+        #     filtered_users = filter_users_by_email_domain(users)
+        #     user_names = map_user_names(users)
+
+        #     # async storage
+        #     await save_json_async("users_async.json", [u.to_dict() for u in users])
+        #     await save_json_async("posts_async.json", [p.to_dict() for p in posts])
+        #     await save_json_async(
+        #         "filtered_users_async.json",
+        #         [u.to_dict() for u in filtered_users]
+        # )
+        #     await save_json_async("user_names_async.json", user_names)
+
 
         # # run async demo
         # asyncio.run(async_reference_demo())

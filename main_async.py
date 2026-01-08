@@ -7,7 +7,7 @@ async def main():
     print("Async application started")
 
     comments = await fetch_comments()
-    await save_json_async("comments.json", comments)
+    await save_json_async("comments_async.json", comments)
 
     print("Async application finished")
 
