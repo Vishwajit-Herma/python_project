@@ -4,6 +4,8 @@
 
 This project is a **pure Python mini-application** created to practice and demonstrate core Python concepts in a real-world–like scenario. The application fetches data from **public REST APIs**, processes it using **object-oriented programming**, **functional programming**, and **concurrency techniques**, and stores the processed results in **JSON files**.
 
+No web frameworks and no databases are used. The focus is on Python fundamentals, clean architecture, and correct use of concurrency models.
+
 ---
 
 ## APIs Used
@@ -12,7 +14,6 @@ Public APIs from JSONPlaceholder:
 
 * Users API: [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
 * Posts API: [https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts)
-* Comments API: [https://jsonplaceholder.typicode.com/comments](https://jsonplaceholder.typicode.com/comments)
 
 ---
 
@@ -24,7 +25,6 @@ project/
 ├── app/
 │   ├── api_sync.py             # Synchronous API calls (requests)
 │   ├── api_async.py            # Asynchronous API calls for users & posts (aiohttp)
-│   ├── api_async_comments.py   # Asynchronous API calls for comments (aiohttp)
 │   ├── concurrency.py          # Threading and multiprocessing logic
 │   ├── mapper.py               # JSON → Object mapping
 │   ├── models.py               # User and Post domain models
@@ -37,8 +37,9 @@ project/
 ├── data/                       # Generated JSON output files
 ├── logs/                       # Application logs
 ├── main.py                     # Main synchronous application entry point
-├── main_async.py               # Async-only application entry point (reference)
+├── requirements.txt            # Project dependencies
 └── README.md
+
 ```
 
 ---
@@ -58,7 +59,7 @@ project/
 5. Store processed data into JSON files
 6. Log all important actions and errors
 
-### Asynchronous Reference Flow (`main.py`)
+### Asynchronous Reference Flow (`main_async.py`)
 
 1. Fetch data from public APIs using **asyncio + aiohttp**
 2. Perform lightweight processing
@@ -130,10 +131,28 @@ All errors are logged using a centralized logger.
 
 * Python 3.9 or higher
 
+### Create and Activate Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+#### On Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+
+#### On Windows
+
+```bash
+venv\Scripts\activate
+```
+
 ### Install Dependencies
 
 ```bash
-pip install requests aiohttp
+pip install -r requirements.txt
 ```
 
 ### Run Synchronous Application
@@ -141,14 +160,6 @@ pip install requests aiohttp
 ```bash
 python main.py
 ```
-
-### Run Asynchronous Reference Application
-
-```bash
-python main_async.py
-```
-
----
 
 ## Output Files
 
@@ -164,7 +175,6 @@ Async reference outputs (if enabled):
 * `users_async.json`
 * `posts_async.json`
 * `filtered_users_async.json`
-* `comments_async.json`
 
 ---
 
