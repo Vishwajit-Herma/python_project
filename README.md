@@ -4,8 +4,6 @@
 
 This project is a **pure Python mini-application** created to practice and demonstrate core Python concepts in a real-world–like scenario. The application fetches data from **public REST APIs**, processes it using **object-oriented programming**, **functional programming**, and **concurrency techniques**, and stores the processed results in **JSON files**.
 
-No web frameworks and no databases are used. The focus is on Python fundamentals, clean architecture, and correct use of concurrency models.
-
 ---
 
 ## APIs Used
@@ -59,7 +57,7 @@ project/
 5. Store processed data into JSON files
 6. Log all important actions and errors
 
-### Asynchronous Reference Flow (`main_async.py`)
+### Asynchronous Reference Flow (`main.py`)
 
 1. Fetch data from public APIs using **asyncio + aiohttp**
 2. Perform lightweight processing
@@ -175,6 +173,7 @@ Async reference outputs (if enabled):
 * `users_async.json`
 * `posts_async.json`
 * `filtered_users_async.json`
+* `comments_async.json`
 
 ---
 
