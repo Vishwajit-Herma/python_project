@@ -11,6 +11,8 @@ from app.concurrency import (
 )
 from app.exceptions import APIError, DataProcessingError, StorageError
 from app.mapper import map_users, map_posts
+from app.storage_async import save_json_async
+
 
 
 def main():
@@ -43,7 +45,18 @@ def main():
         save_json("user_names.json", user_names)
 
         # -------- ASYNC --------
-        asyncio.run(fetch_all())
+       
+        # async def async_reference_demo():
+        #     # async fetch
+        #     users, posts = await fetch_all()
+
+        #     # async store
+        #     await save_json_async("users_async.json", users)
+        #     await save_json_async("posts_async.json", posts)
+
+        # # run async demo
+        # asyncio.run(async_reference_demo())
+
 
         print("Application finished successfully")
 
