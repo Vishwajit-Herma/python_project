@@ -79,8 +79,9 @@ def main():
 
         print("Application finished successfully")
 
-    except (APIError, DataProcessingError, StorageError) as e:
-        print(f"Application error: {e}")
+
+except (APIError, DataProcessingError, StorageError) as e:
+    logger.error(f"Application error: {e}")
 
     except Exception as e:
         print(f"Unexpected error: {e}")
