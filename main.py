@@ -13,6 +13,7 @@ from app.concurrency import (
 from app.exceptions import APIError, DataProcessingError, StorageError
 from app.mapper import map_users, map_posts
 from app.storage_async import save_json_async
+from app.logger import logger
 
 
 
@@ -80,11 +81,11 @@ def main():
         print("Application finished successfully")
 
 
-except (APIError, DataProcessingError, StorageError) as e:
-    logger.error(f"Application error: {e}")
+    except (APIError, DataProcessingError, StorageError) as e:
+        logger.error(f"Application error: {e}")
 
     except Exception as e:
-        print(f"Unexpected error: {e}")
+        logger.exception("Unexpected error occurred")
 
 
 if __name__ == "__main__":
