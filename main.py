@@ -42,8 +42,7 @@ def main():
         save_json("users.json", [u.to_dict() for u in users])
         save_json("posts.json", [p.to_dict() for p in posts])
         save_json("filtered_users.json", [user.to_dict() for user in filtered_users])
-        save_json("user_names.json", user_names)
-        
+        save_json("user_names.json", user_names)        
 
         # -------- ASYNC --------
        

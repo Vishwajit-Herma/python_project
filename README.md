@@ -18,25 +18,43 @@ Public APIs from JSONPlaceholder:
 ## Folder Structure
 
 ```
-project/
+python_project/
 │
 ├── app/
-│   ├── api_sync.py             # Synchronous API calls (requests)
-│   ├── api_async.py            # Asynchronous API calls for users & posts (aiohttp)
-│   ├── concurrency.py          # Threading and multiprocessing logic
-│   ├── mapper.py               # JSON → Object mapping
-│   ├── models.py               # User and Post domain models
-│   ├── processor.py            # Filter, map, reduce logic
-│   ├── storage.py              # Synchronous JSON storage
-│   ├── storage_async.py        # Asynchronous JSON storage (reference)
-│   ├── logger.py               # Logging configuration
-│   └── exceptions.py           # Custom exception classes
+│   ├── api/
+│   │   ├── __init__.py
+│   │   ├── sync.py          # requests-based API calls
+│   │   └── async_.py        # aiohttp-based API calls
+│   │
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── models.py        # BaseModel, User, Post
+│   │   ├── mapper.py        # JSON → objects
+│   │   └── processor.py    # filter / map / reduce / generators
+│   │
+│   ├── concurrency/
+│   │   ├── __init__.py
+│   │   ├── threads.py       # threading logic
+│   │   └── processes.py    # multiprocessing logic
+│   │
+│   ├── storage/
+│   │   ├── __init__.py
+│   │   ├── sync.py          # JSON storage
+│   │   └── async_.py        # async-safe storage
+│   │
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   ├── logger.py
+│   │   └── exceptions.py
+│   │
+│   └── __init__.py
 │
-├── data/                       # Generated JSON output files
-├── logs/                       # Application logs
-├── main.py                     # Main synchronous application entry point
-├── requirements.txt            # Project dependencies
+├── data/
+├── logs/
+├── main.py
+├── requirements.txt
 └── README.md
+
 
 ```
 
