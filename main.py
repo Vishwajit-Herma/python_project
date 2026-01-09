@@ -31,8 +31,6 @@ def main():
 
         # -------- PROCESSING --------
         filtered_users = filter_users_by_email_domain(users)    
-        # filtered_users = list(active_user_generator(users))
-
         user_names = map_user_names(users)
 
         # -------- MULTIPROCESSING FUNCTIONALITY --------
@@ -61,7 +59,7 @@ def main():
             posts = map_posts(raw_posts)
 
             # processing
-            filtered_users = filter_users_by_email_domain(users)
+            filtered_users = list(active_user_generator(users))
             user_names = map_user_names(users)
 
             # async storage
