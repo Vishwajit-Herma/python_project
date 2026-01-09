@@ -65,10 +65,7 @@ def main():
             # async storage
             await save_json_async("users_async.json", [u.to_dict() for u in users])
             await save_json_async("posts_async.json", [p.to_dict() for p in posts])
-            await save_json_async(
-                "filtered_users_async.json",
-                [u.to_dict() for u in filtered_users]
-        )
+            await save_json_async("filtered_users_async.json",[u.to_dict() for u in filtered_users])
             await save_json_async("user_names_async.json", user_names)
 
 
