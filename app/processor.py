@@ -9,6 +9,10 @@ def filter_users_by_email_domain(users):
             user for user in users
             if user.email.endswith((".org", ".biz"))
         ]
+        # return list(
+        #     filter(lambda user: user.email.endswith((".org", ".biz")), users)
+        # )
+
     except Exception as e:
         logger.error(f"Filtering users failed: {e}")
         raise DataProcessingError("User filtering failed")
@@ -17,6 +21,7 @@ def filter_users_by_email_domain(users):
 def map_user_names(users):
     try:
         return [user.name for user in users]
+        # return list(map(lambda user: user.name, users))
     except Exception as e:
         logger.error(f"Mapping user names failed: {e}")
         raise DataProcessingError("User name mapping failed")
