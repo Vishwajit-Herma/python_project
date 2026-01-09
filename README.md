@@ -82,6 +82,7 @@ This async flow is included for demonstration purposes and does not replace the 
 * `map` (extract user names)
 * `filter` (filter users by email domain)
 * `reduce` (count total posts)
+* `generator` (filter users by email domain)
 
 ### Concurrency
 
