@@ -1,8 +1,8 @@
 import json
 import asyncio
-from app.storage import DATA_DIR
-from app.logger import logger
-from app.exceptions import StorageError
+from app.storage.sync import DATA_DIR
+from app.utils.logger import logger
+from app.utils.exceptions import StorageError
 import os
 
 

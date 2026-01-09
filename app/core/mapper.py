@@ -1,4 +1,4 @@
-from app.models import User, Post
+from app.core.models import User, Post
 
 
 def map_users(user_dicts):

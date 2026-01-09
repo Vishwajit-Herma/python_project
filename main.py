@@ -1,19 +1,17 @@
 import asyncio
-from app.api_async import fetch_all
-from app.processor import (
+from app.api.async_ import fetch_all
+from app.core.processor import (
     filter_users_by_email_domain,
     map_user_names,
     active_user_generator
 )
-from app.storage import save_json
-from app.concurrency import (
-    fetch_data_with_threads,
-    process_data_with_multiprocessing
-)
-from app.exceptions import APIError, DataProcessingError, StorageError
-from app.mapper import map_users, map_posts
-from app.storage_async import save_json_async
-from app.logger import logger
+from app.storage.sync import save_json
+from app.concurrency.threads import fetch_data_with_threads
+from app.concurrency.processes import process_data_with_multiprocessing 
+from app.utils.exceptions import APIError, DataProcessingError, StorageError
+from app.core.mapper import map_users, map_posts
+from app.storage.async_ import save_json_async
+from app.utils.logger import logger
 
 
 

@@ -1,7 +1,7 @@
 import aiohttp
 import asyncio
-from app.logger import logger
-from app.exceptions import APIError
+from app.utils.logger import logger
+from app.utils.exceptions import APIError
 
 
 async def fetch(session, url):

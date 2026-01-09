@@ -1,6 +1,6 @@
 import requests
-from app.logger import logger
-from app.exceptions import APIError
+from app.utils.logger import logger
+from app.utils.exceptions import APIError
 
 USERS_API = "https://jsonplaceholder.typicode.com/users"
 POSTS_API = "https://jsonplaceholder.typicode.com/posts"

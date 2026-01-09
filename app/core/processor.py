@@ -1,6 +1,6 @@
 from functools import reduce
-from app.logger import logger
-from app.exceptions import DataProcessingError
+from app.utils.logger import logger
+from app.utils.exceptions import DataProcessingError
 
 
 def filter_users_by_email_domain(users):
