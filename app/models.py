@@ -26,9 +26,6 @@ class User(BaseModel):
     def __str__(self):
         return self._name
     
-    def __eq__(self, other):
-        return self._id == other._id
-
     def to_dict(self):
         return {
             'id': self._id,
