@@ -2,11 +2,7 @@ from multiprocessing import Process, Queue
 from app.utils.logger import logger
 from app.utils.exceptions import DataProcessingError
 
-# ---------------- MULTIPROCESSING ----------------
 def count_items(data, queue, label):
-    """
-    Count items in a dataset inside a process.
-    """
     try:
         logger.info(f"Process: counting {label}")
         queue.put(len(data))

@@ -1,10 +1,8 @@
 from threading import Thread
 from app.api.sync import fetch_users, fetch_posts
 from app.utils.logger import logger
-from app.utils.exceptions import APIError, DataProcessingError
+from app.utils.exceptions import APIError
 
-
-# ---------------- THREADING ----------------
 def fetch_users_thread(result):
     try:
         logger.info("Thread: fetching users")
