@@ -1,8 +1,11 @@
 import aiohttp
 import asyncio
+from app.api.sync import USERS_API
 from app.utils.logger import logger
 from app.utils.exceptions import APIError
 
+USERS_API = "https://jsonplaceholder.typicode.com/users"
+POSTS_API = "https://jsonplaceholder.typicode.com/posts"
 
 async def fetch(session, url):
     try:
@@ -22,10 +25,10 @@ async def fetch_all():
     try:
         async with aiohttp.ClientSession() as session:
             users_task = asyncio.create_task(
-                fetch(session, "https://jsonplaceholder.typicode.com/users")
+                fetch(session, USERS_API)
             )
             posts_task = asyncio.create_task(
-                fetch(session, "https://jsonplaceholder.typicode.com/posts")
+                fetch(session, POSTS_API)
             )
 
             users = await users_task
