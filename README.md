@@ -93,7 +93,7 @@ This async flow is included for demonstration purposes and does not replace the 
 * Inheritance
 * Encapsulation
 * Method overriding
-* Operator overloading (`__eq__`, `__str__`)
+* Operator overloading (`__str__`)
 
 ### Functional Programming
 
